@@ -16,37 +16,37 @@ export class Items {
   constructor() {
     let items = [
       {
-        "name": "Burt Bear",
+        "name": "Air Conditioning Installation",
         "profilePic": "assets/img/speakers/bear.jpg",
         "about": "Burt is a Bear."
       },
       {
-        "name": "Charlie Cheetah",
+        "name": "Electrical Wiring",
         "profilePic": "assets/img/speakers/cheetah.jpg",
         "about": "Charlie is a Cheetah."
       },
       {
-        "name": "Donald Duck",
+        "name": "Movers",
         "profilePic": "assets/img/speakers/duck.jpg",
         "about": "Donald is a Duck."
       },
       {
-        "name": "Eva Eagle",
+        "name": "Home Cleaning",
         "profilePic": "assets/img/speakers/eagle.jpg",
         "about": "Eva is an Eagle."
       },
       {
-        "name": "Ellie Elephant",
+        "name": "Event Planner",
         "profilePic": "assets/img/speakers/elephant.jpg",
         "about": "Ellie is an Elephant."
       },
       {
-        "name": "Molly Mouse",
+        "name": "Contractor",
         "profilePic": "assets/img/speakers/mouse.jpg",
         "about": "Molly is a Mouse."
       },
       {
-        "name": "Paul Puppy",
+        "name": "Renovation and Refurbishing",
         "profilePic": "assets/img/speakers/puppy.jpg",
         "about": "Paul is a Puppy."
       }
