@@ -25,12 +25,24 @@ $background-color:  #fff;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
+  primary:    #f34646,
+  secondary:  #755d5b,
+  danger:     #f70303,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  fb:         #3b5998,
+  google:     #b4a09f
+
+
 );
+
+//import font-awesome scss
+@import "scss/font-awesome"; @font-face { font-family: 'FontAwesome'; src: url('../assets/fonts/fontawesome-webfont.eot?v=#{$fa-version}');
+src: url('../assets/fonts/fontawesome-webfont.eot?#iefix&v=#{$fa-version}') format('embedded-opentype'),
+url('../assets/fonts/fontawesome-webfont.woff2?v=#{$fa-version}') format('woff2'),
+url('../assets/fonts/fontawesome-webfont.woff?v=#{$fa-version}') format('woff'),
+url('../assets/fonts/fontawesome-webfont.ttf?v=#{$fa-version}') format('truetype'),
+url('../assets/fonts/fontawesome-webfont.svg?v=#{$fa-version}#fontawesomeregular') format('svg'); font-weight: normal; font-style: normal; }
 
 
 // App iOS Variables

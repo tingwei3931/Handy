@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
+    <ion-title><i class="fa fa-unlock" aria-hidden="true"></i> {{ 'LOGIN_TITLE' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -12,8 +12,8 @@
     <ion-list>
 
       <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email" value=""></ion-input>
       </ion-item>
 
       <!--
@@ -26,14 +26,41 @@
       -->
 
       <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password" value=""></ion-input>
       </ion-item>
 
       <div padding>
-        <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
+          <button ion-button round icon-left color="primary" block> 
+            <ion-icon name="log-in"></ion-icon>
+            {{ 'LOGIN_BUTTON' | translate }}
+          </button>
+      </div>
+      <div text-center (click)="redirectResetPass()">Forgot Password?</div> 
+      <div padding>
+        <button block ion-button icon-left round color="fb">
+          <ion-icon name='logo-facebook'></ion-icon>
+          Login Using Facebook
+        </button>
+        <button block ion-button icon-left round color="google">
+          <ion-icon name='logo-googleplus'></ion-icon>
+          Login Using Google
+        </button>
       </div>
 
+      <div padding>
+        <p text-center>Don't have an account? </p>
+        <button (click)="submitRegister()" ion-button block round color="primary">
+          Register Now
+        </button>
+      </div>
+    </ion-list>
+    <!--FOR LEARNING PURPOSES COMMENT THIS DURING PRODUCTION-->
+    <ion-list>
+      <p>Users</p>
+      <ion-item *ngFor="let user of usersList">
+        <ion-label>{{user.name.first}} {{user.name.last}}</ion-label>
+      </ion-item>
     </ion-list>
   </form>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, ViewController } from 'ionic-angular';
 
 import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
@@ -14,11 +14,13 @@ export class SignupPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: { name: string, email: string, password: string, confirmPassword: string} = {
-    name: 'Test Human',
-    email: 'test@example.com',
-    password: 'test',
-    confirmPassword: ''
+  account: { name: string, email: string, mobile_no: string, password: string, confirmPassword: string} = {
+    name: '',
+    email: '',
+    mobile_no: '',
+    password: '',
+    confirmPassword: '',
+
   };
 
   // Our translated text strings
@@ -27,11 +29,17 @@ export class SignupPage {
   constructor(public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
-    public translateService: TranslateService) {
+    public translateService: TranslateService,
+    public viewCtrl: ViewController) {
 
     this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
       this.signupErrorString = value;
     })
+  }
+
+  //closes the register modal
+  closeRegisterPage(){
+    this.viewCtrl.dismiss();
   }
 
   doSignup() {

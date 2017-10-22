@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 
 import { Api } from '../api/api';
 
+import { Http } from '@angular/http';
+
 /**
  * Most apps have the concept of a User. This is a simple provider
  * with stubs for login/signup/etc.
@@ -26,8 +28,9 @@ import { Api } from '../api/api';
 @Injectable()
 export class User {
   _user: any;
-
-  constructor(public api: Api) { }
+  data: any;
+  constructor(public api: Api,
+              public http: Http) { }
 
   /**
    * Send a POST request to our login endpoint with the data
@@ -80,5 +83,23 @@ export class User {
    */
   _loggedIn(resp) {
     this._user = resp.user;
+  }
+
+  //load all users
+  //EXAMPLE COMMENT THIS OUT AFTER LEARNING
+  loadUser(number){
+    if(this.data){
+      return Promise.resolve(this.data);
+
+    }
+    return new Promise(resolve => {
+      this.http.get('https://randomuser.me/api/?results=' + number)
+        .map(res => res.json()) //map the data gained into json format
+        .subscribe(data => {
+          this.data = data.results;
+          console.log(this.data);
+          resolve(this.data);
+        })
+      })
   }
 }

@@ -5,7 +5,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
 
 import { FirstRunPage } from '../pages/pages';
+import { MainPage } from '../pages/pages';
+import { LoginPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
+import * as firebase from 'firebase';
+
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -27,9 +31,12 @@ import { Settings } from '../providers/providers';
   <ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = FirstRunPage;
-
+  // rootPage will be the tutorial page(FirstRunPage) if the user is first time (UNDER CONSTRUCTION)
+  //rootPage = FirstRunPage;
+  rootPage: any;
   @ViewChild(Nav) nav: Nav;
+
+
 
   pages: any[] = [
     { title: 'Tutorial', component: 'TutorialPage' },
@@ -42,7 +49,8 @@ export class MyApp {
     { title: 'Master Detail', component: 'ListMasterPage' },
     { title: 'Menu', component: 'MenuPage' },
     { title: 'Settings', component: 'SettingsPage' },
-    { title: 'Search', component: 'SearchPage' }
+    { title: 'Search', component: 'SearchPage' },
+    { title: 'Forgot Password', component: 'ForgotPasswordPage' }
   ]
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
@@ -51,7 +59,30 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      //initialize firebase and check for login
+      //API key for Firebase
+      var config = {
+        apiKey: "AIzaSyD4BSrdGCVs-mG4BdgIGSrq2GePDWcw3dk",
+        authDomain: "estekhandy.firebaseapp.com",
+        databaseURL: "https://estekhandy.firebaseio.com",
+        projectId: "estekhandy",
+        storageBucket: "estekhandy.appspot.com",
+        messagingSenderId: "447284265080"
+      };
+      firebase.initializeApp(config);
+      firebase.auth().onAuthStateChanged((user) => {
+        //if user login, start with the main page
+        //else go to login
+        if (user){
+          this.rootPage = MainPage;
+        }
+        else{
+          this.rootPage = LoginPage;
+        }
+        
+      });
     });
+
     this.initTranslate();
   }
 
